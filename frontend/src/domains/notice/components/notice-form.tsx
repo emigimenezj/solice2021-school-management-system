@@ -84,9 +84,14 @@ export const NoticeForm: React.FC<Props> = ({
         fullWidth
         size='small'
         sx={{ marginTop: '20px' }}
+        slotProps={{
+          htmlInput: {
+            'data-testid': 'add-notice-title'
+          }
+        }}
       />
       <TextField
-        {...register('content')}
+        {...register('description')}
         error={Boolean(errors.description)}
         helperText={errors.description?.message}
         type='text'
@@ -97,6 +102,11 @@ export const NoticeForm: React.FC<Props> = ({
         maxRows={10}
         fullWidth
         sx={{ marginTop: '30px' }}
+        slotProps={{
+          htmlInput: {
+            'data-testid': 'add-notice-description'
+          }
+        }}
       />
       <FormControl
         sx={{ marginTop: '30px', minWidth: { xs: '100%', md: '350px' } }}
@@ -117,6 +127,7 @@ export const NoticeForm: React.FC<Props> = ({
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 notched
+                data-testid='add-notice-status'
               >
                 <MenuItem value='' disabled>
                   <em>None</em>
@@ -238,6 +249,7 @@ export const NoticeForm: React.FC<Props> = ({
         size='medium'
         variant='contained'
         sx={{ margin: '30px 0 10px 0' }}
+        data-testid='save-notice-button'
       >
         Save
       </LoadingButton>

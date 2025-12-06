@@ -43,7 +43,10 @@ export const DrawerContent: React.FC<DrawerContentProps> = ({
             if (Array.isArray(subMenus) && subMenus.length > 0) {
               return (
                 <Box key={name}>
-                  <ListItemButton onClick={() => handleNavigationClick(name)}>
+                  <ListItemButton 
+                    onClick={() => handleNavigationClick(name)}
+                    data-testid={`menu-${name.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
                     <ListItemIcon>
                       <img width='20px' height='20px' src={`${API_URL}/${icon}`} />
                     </ListItemIcon>
@@ -58,6 +61,7 @@ export const DrawerContent: React.FC<DrawerContentProps> = ({
                           component={Link}
                           to={`/app/${path}`}
                           sx={{ paddingLeft: '75px' }}
+                          data-testid={`submenu-${name.toLowerCase().replace(/\s+/g, '-')}`}
                         >
                           <ListItemText primary={name} />
                         </ListItemButton>
@@ -68,7 +72,12 @@ export const DrawerContent: React.FC<DrawerContentProps> = ({
               );
             } else {
               return (
-                <ListItemButton key={name} component={Link} to={`/app/${path}`}>
+                <ListItemButton 
+                  key={name} 
+                  component={Link} 
+                  to={`/app/${path}`}
+                  data-testid={`menu-${name.toLowerCase().replace(/\s+/g, '-')}`}
+                >
                   <ListItemIcon>
                     <img width='20px' height='20px' src={`${API_URL}/${icon}`} />
                   </ListItemIcon>

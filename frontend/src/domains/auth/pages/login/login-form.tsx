@@ -28,6 +28,11 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, methods, isFetch
           {...register('username')}
           error={!!errors.username}
           helperText={errors.username?.message}
+          slotProps={{
+            htmlInput: {
+              'data-testid': 'username-input'
+            }
+          }}
         />
       </div>
       <div>
@@ -40,10 +45,15 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, methods, isFetch
           {...register('password')}
           error={!!errors.password}
           helperText={errors.password?.message}
+          slotProps={{
+            htmlInput: {
+              'data-testid': 'password-input'
+            }
+          }}
         />
       </div>
       <Stack>
-        <LoadingButton loading={isFetching} type='submit' size='small' variant='contained'>
+        <LoadingButton loading={isFetching} type='submit' size='small' variant='contained' data-testid='submit-login-button'>
           <span>Sign In</span>
         </LoadingButton>
       </Stack>
